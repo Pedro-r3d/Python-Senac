@@ -1,28 +1,16 @@
 import uuid
-import json
 import os
 from datetime import datetime
 
-ARQUIVO = "./pasta/usuarios.json"
+import visitanterepository
+
 
 def clear_console():
     os.system('cls' if os.name == 'nt' else 'clear')
 
-def carregar_usuarios():
-    try:
-        with open(ARQUIVO, "r", encoding="utf-8") as arquivo:
-            return json.load(arquivo)
-    except FileNotFoundError:
-        return []
-    except json.JSONDecodeError:
-        return []
-
-def salvar_usuarios(usuarios):
-    with open(ARQUIVO, "w", encoding="utf-8") as arquivo:
-        json.dump(usuarios, arquivo, indent=4, ensure_ascii=False)      
 
 usuario = {}
-usuarios = carregar_usuarios()
+usuarios = visitanterepository.carregar_usuarios()
         
 while True:
     clear_console()
@@ -110,7 +98,7 @@ while True:
             }
             
             usuarios.append(usuario)
-            salvar_usuarios(usuarios)
+            visitanterepository.salvar_usuarios(usuarios)
             
             quantidade_visitantes = len(usuarios)
             #LISTAR USUARIOS
@@ -133,7 +121,7 @@ while True:
                     if usuario["cpf"] == deletar:
                         usuario_encontrado = True
                         usuarios.pop(indice)
-                        salvar_usuarios(usuarios)
+                        visitanterepository.salvar_usuarios(usuarios)
                         print(f"Visitante {usuario["nome"]} removido.")
                         input("-Voltar-")
                 if not usuario_encontrado:
