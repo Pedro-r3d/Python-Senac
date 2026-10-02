@@ -19,7 +19,6 @@ def cadastrar_usuario(nome: str, idade: int = 18):
     print(f"Cadastrando nome {nome}")
     print(f"Cadastrando idade {idade}")
 
-
 idade = 27
 
 cadastrar_usuario("Guilherme",idade)

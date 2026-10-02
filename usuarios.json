@@ -1,0 +1,11 @@
+[
+    {
+        "nome": "pedro",
+        "data_nascimento": "05/05/2010",
+        "idade": 16,
+        "cpf": "05303223411",
+        "tipo_ingresso": "Normal",
+        "data_visita": "10/10/2026",
+        "numero_ingresso": "75fc5804-b560-41f0-9117-a6c48ba9f4ce"
+    }
+]
