@@ -1,0 +1,20 @@
+/* estilizando pela tag
+a {
+    width: 120px;
+}
+
+estilizando pela tag
+button {
+    width: 120px;
+}
+
+estilizando pelo id
+#ticket_type {
+    color: black;
+} */
+
+/* estilizando pela classe  */
+.btn-custom {
+    width: 130px;
+    height: 40px;
+}

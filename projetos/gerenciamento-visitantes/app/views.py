@@ -1,8 +1,7 @@
 from django.shortcuts import render, redirect
 from datetime import datetime
 from uuid import uuid4
-from django.shortcuts import render, get_object_or_404
-
+from django.db.models import Q
 
 from .models import Visitor
 
@@ -11,10 +10,22 @@ def home(request):
     return render(request, 'home.html')
 
 def visitors(request):
+    search = request.GET.get('name_or_cpf', '').strip()
+    ticket_type = request.GET.get('ticket_type', '')
+
     visitors = Visitor.objects.all()
 
+    visitors = visitors.filter(
+        Q(first_name__icontains=search)
+        | Q(last_name__icontains=search)
+        | Q(cpf__contains=search),
+        Q(ticket_type__contains=ticket_type)
+        )
+
     response = {
-        'visitors': visitors
+        'visitors': visitors,
+        'search' : search,
+        'ticket_type' : ticket_type
     }
 
     return render(request, 'visitors.html', response)
@@ -37,11 +48,9 @@ def create_visitor(request):
 
     return render(request, 'create-visitor.html')
 
-def update_visitor(request,id):
-    visitor = get_object_or_404(Visitor, id=id)
-    
+def update_visitor(request, id):
+    visitor = Visitor.objects.get(pk=id)
     if request.method == 'POST':
-
         visitor.first_name = request.POST['first_name']
         visitor.last_name = request.POST['last_name']
         visitor.cpf = request.POST['cpf']
@@ -53,5 +62,15 @@ def update_visitor(request,id):
 
         return redirect('visitors')
 
-    return render(request, 'update-visitor.html', {'visitor' : visitor})
+    response = {
+        'visitor': visitor    
+    }
 
+    return render(request, 'update-visitor.html', response)
+
+def delete_visitor(request, id):
+    visitor = Visitor.objects.get(pk=id)
+
+    visitor.delete()
+
+    return redirect('visitors')
