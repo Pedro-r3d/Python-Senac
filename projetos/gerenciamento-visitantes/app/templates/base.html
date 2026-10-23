@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+
+
+    <link rel="icon" type="image/jpg" href="{% static 'visitors/images/logo.jpg' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'visitors/css/style.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+
+    <title>{% block title %}Parque da Oktoberfest{% endblock %}</title>
+</head>
+<body>
+    <header>
+        <style>
+    body{
+        background-color: #191919;
+    }
+ 
+    label{
+        color: white;
+    }
+    input:not(.btn){
+        background-color: #191919 !important;
+        color: white !important;
+    }
+    input:focus:not(.btn) {
+        background-color: #191919 !important; 
+        outline: none !important;             
+        border-color: #0284c7 !important; 
+        color: white !important; 
+    }
+    select{
+        background-color: #191919 !important;
+        color: white !important;
+    }
+    select:focus{
+        background-color: #191919 !important; 
+        outline: none !important;             
+        border-color: #0284c7 !important; 
+        color: white !important; 
+    }
+    
+</style>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="{% url 'home' %}">
+                    <img src="{%static 'visitors/images/logo.jpg' %}" width="60px" alt="Logo Oktoberfest">
+                    Parque da Oktoberfest
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu_principal"
+                    aria-controls="menu_principal" aria-expanded="false" aria-label="Alternar navegação">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="menu_principal">
+
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'home' %}">Início</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'create_visitor' %}">Cadastrar visitante</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'visitors' %}">Visitantes</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="">Estatísticas</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        
+    </main>
+
+    <main class="container-fluid pt-2">
+        {% block content %}
+        {% endblock %}
+    </main>
+</body>
+</html>

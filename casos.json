@@ -1,0 +1,29 @@
+[
+    {
+        "id_caso": "de5f1118-c7e3-45e1-8b30-7454e347122c",
+        "titulo": "p",
+        "local": "p",
+        "suspeitos": [],
+        "resolvido": false,
+        "data_criado": "2026-10-02T21:53:02.548758",
+        "data_resolvido": null
+    },
+    {
+        "id_caso": "2485b537-7615-4c6f-b2a8-7d3cf6bd0a0f",
+        "titulo": "p",
+        "local": "t",
+        "suspeitos": [],
+        "resolvido": false,
+        "data_criado": "2026-10-06T19:14:11.575025",
+        "data_resolvido": null
+    },
+    {
+        "id_caso": "fd64daeb-56e8-45c7-ad18-74316790d96d",
+        "titulo": "",
+        "local": "",
+        "suspeitos": [],
+        "resolvido": false,
+        "data_criado": "2026-10-06T19:14:55.592220",
+        "data_resolvido": null
+    }
+]

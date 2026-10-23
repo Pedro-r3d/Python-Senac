@@ -1,47 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% extends 'base.html' %}
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+{% block title %}
+Atualizar visitantes
+{% endblock %}
 
-    <title>Atualização de visitantes</title>
-</head>
-<body>
+{% block content %}
+
     <div class="container-fluid pt-5">
-        <h1>Atualizar visitante</h1>
-        <p>Use o formulário abaixo para editar o visitante escolhido</p>
+        <h1 class="text text-light">Atualizar visitante existente</h1>
+        <p class="text text-light">Use o formulário abaixo para atualizar um visitante</p>
 
-        <form action="" method="post">
+        <form action="./" method="post">
             {% csrf_token %}
-
             <label for="first_name" class="form-label">Primeiro nome</label>
-            <input type="text" class="form-control" id="first_name" name="first_name" value="{{visitor.first_name}}">
+            <input type="text" class="form-control" id="first_name" name="first_name" value="{{ visitor.first_name }}">
             
             <label for="last_name" class="form-label">Último nome</label>
-            <input type="text" class="form-control" id="last_name" name="last_name" value="{{visitor.last_name}}">
+            <input type="text" class="form-control" id="last_name" name="last_name" value="{{ visitor.last_name }}">
             
             <label for="cpf" class="form-label">CPF</label>
-            <input type="text" class="form-control" id="cpf" name="cpf" value="{{visitor.cpf}}">
+            <input type="text" class="form-control" id="cpf" name="cpf" value="{{ visitor.cpf }}">
             
             <label for="birth_date" class="form-label">Data de nascimento</label>
-            <input type="date" class="form-control" id="birth_date" name="birth_date" value="{{visitor.birth_date|date:'Y-m-d'}}">
+            <input type="date" class="form-control" id="birth_date" name="birth_date" value="{{ visitor.birth_date|date:'Y-m-d' }}">
             
             <label for="ticket_date" class="form-label">Data do ingresso</label>
-            <input type="date" class="form-control" id="ticket_date" name="ticket_date" value="{{visitor.ticket_date|date:'Y-m-d'}}">
+            <input type="date" class="form-control" id="ticket_date" name="ticket_date" value="{{ visitor.ticket_date|date:'Y-m-d' }}">
 
-            <label for="ticket_type" class="form-label">Tipo do ingresso({{visitor.ticket_type}})</label>
-            <select name="ticket_type" id="ticket_type" class="form-control">
-                <option value="1">Normal</option>
-                <option value="2">VIP</option>
-                <option value="3">Premium</option>
+            <label for="ticket_type" class="form-label">Tipo do ingresso</label>
+            <select name="ticket_type" id="ticket_type" class="form-select">
+                <option value="1" {% if visitor.ticket_type == 1 %} selected {% endif %}>Normal</option>
+                <option value="2" {% if visitor.ticket_type == 2 %} selected {% endif %}>VIP</option>
+                <option value="3" {% if visitor.ticket_type == 3 %} selected {% endif %}>Premium</option>
+            </select>
 
-            <input type="submit" value="Salvar" class="btn btn-success mt-3">
+            <input type="submit" value="Atualizar" class="btn btn-success mt-3 btn-custom">
         </form>
-        
-        <a href="{% url 'visitors' %}" class="btn btn-outline-primary mt-3">Voltar</a>
+
+        <a href="../../" class="btn btn-outline-primary mt-3 btn-custom">Voltar</a>
     </div>
-</body> 
-</html>
+{% endblock %}

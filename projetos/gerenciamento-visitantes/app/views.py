@@ -1,8 +1,6 @@
 from django.shortcuts import render, redirect
 from datetime import datetime
 from uuid import uuid4
-from django.shortcuts import render, get_object_or_404
-
 
 from .models import Visitor
 
@@ -37,11 +35,9 @@ def create_visitor(request):
 
     return render(request, 'create-visitor.html')
 
-def update_visitor(request,id):
-    visitor = get_object_or_404(Visitor, id=id)
-    
+def update_visitor(request, id):
+    visitor = Visitor.objects.get(pk=id)
     if request.method == 'POST':
-
         visitor.first_name = request.POST['first_name']
         visitor.last_name = request.POST['last_name']
         visitor.cpf = request.POST['cpf']
@@ -53,5 +49,15 @@ def update_visitor(request,id):
 
         return redirect('visitors')
 
-    return render(request, 'update-visitor.html', {'visitor' : visitor})
+    response = {
+        'visitor': visitor    
+    }
 
+    return render(request, 'update-visitor.html', response)
+
+def delete_visitor(request, id):
+    visitor = Visitor.objects.get(pk=id)
+
+    visitor.delete()
+
+    return redirect('visitors')

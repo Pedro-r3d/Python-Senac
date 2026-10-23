@@ -18,7 +18,6 @@ class Usuario():
         self.data_visita = data_visita
         self.numero_ingresso = numero_ingresso
                     
-
 usuario = {}
 
 dados_usuarios = visitanterepository.carregar_usuarios()
