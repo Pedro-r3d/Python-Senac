@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title %}
+<<<<<<< HEAD
 Criar visitantes
 {% endblock %}
 
@@ -9,6 +10,16 @@ Criar visitantes
     <div class="container-fluid pt-5">
         <h1 class="text text-light ">Criar novo visitante</h1>
         <p class="text text-light">Use o formulário abaixo para criar um novo visitante</p>
+=======
+Criar visitante
+{% endblock %}
+
+{% block content %}
+
+    <div>
+        <h1>Criar novo visitante</h1>
+        <p>Use o formulário abaixo para criar um novo visitante</p>
+>>>>>>> 68a88759a20ac4732014fefcfd531ad508b3f4a5
 
         <form action="./" method="post">
             {% csrf_token %}
@@ -37,6 +48,12 @@ Criar visitantes
             <input type="submit" value="Salvar" class="btn btn-success mt-3 btn-custom">
         </form>
 
+<<<<<<< HEAD
         <a href="../" class="btn btn-outline-primary mt-3 btn-custom">Voltar</a>
     </div>
 {% endblock%}
+=======
+        <a href="../" class="btn btn-outline-primary mt-3">Voltar</a>
+    </div>
+{% endblock %}
+>>>>>>> 68a88759a20ac4732014fefcfd531ad508b3f4a5

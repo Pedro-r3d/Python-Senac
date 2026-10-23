@@ -1,6 +1,10 @@
 from django.shortcuts import render, redirect
 from datetime import datetime
 from uuid import uuid4
+<<<<<<< HEAD
+=======
+from django.db.models import Q
+>>>>>>> 68a88759a20ac4732014fefcfd531ad508b3f4a5
 
 from .models import Visitor
 
@@ -9,10 +13,22 @@ def home(request):
     return render(request, 'home.html')
 
 def visitors(request):
+    search = request.GET.get('name_or_cpf', '').strip()
+    ticket_type = request.GET.get('ticket_type', '')
+
     visitors = Visitor.objects.all()
 
+    visitors = visitors.filter(
+        Q(first_name__icontains=search)
+        | Q(last_name__icontains=search)
+        | Q(cpf__contains=search),
+        Q(ticket_type__contains=ticket_type)
+        )
+
     response = {
-        'visitors': visitors
+        'visitors': visitors,
+        'search' : search,
+        'ticket_type' : ticket_type
     }
 
     return render(request, 'visitors.html', response)
