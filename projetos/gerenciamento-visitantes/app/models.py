@@ -1,4 +1,6 @@
 from django.db import models
+from datetime import date
+
 
 # Create your models here.
 class Visitor(models.Model):
@@ -17,3 +19,6 @@ class Visitor(models.Model):
 
     def __str__(self):
         return f'{self.first_name} {self.last_name}'
+
+
+    

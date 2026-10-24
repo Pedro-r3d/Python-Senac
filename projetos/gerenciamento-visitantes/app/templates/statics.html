@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Estatísticas
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1>Estatísticas</h1>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="table-responsive">
+                <table class="table table-bordered"> 
+                    <thead>
+                        <tr>
+                            <th>Total de visitantes</th>
+                            <th>Quantidade de ingressos Normal</th>
+                            <th>Quantidade de ingressos Vip</th>
+                            <th>Quantidade de ingressos Premium</th>
+                            <th>Média de idade dos visitantes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{ visitor_total }}</td>
+                            <td>{{ visitor_normal }}</td>
+                            <td>{{ visitor_vip }}</td>
+                            <td>{{ visitor_premium }}</td>
+                            <td>{{ visitor_age }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <a href="../../" class="btn btn-outline-primary">Voltar</a>
+            </div>
+        </div>
+      <div class="col-md-4">
+            <div class="card shadow-sm p-3">
+                <h5 class="card-title text-center mb-3">Tipos de Ingressos</h5>
+            
+                <canvas id="graficoIngressos"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="{% static 'js/chart.umd.min.js' %}"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const normal = parseInt("{{ visitor_normal }}") || 0;
+        const vip = parseInt("{{ visitor_vip }}") || 0;
+        const premium = parseInt("{{ visitor_premium }}") || 0;
+
+        const ctx = document.getElementById('graficoIngressos').getContext('2d');
+        
+        new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: ['Normal', 'VIP', 'Premium'],
+                datasets: [{
+                    label: 'Quantidade',
+                    data: [normal, vip, premium],
+                    backgroundColor: [
+                        '#4e73df', 
+                        '#1cc88a', 
+                        '#f6c23e'  
+                    ],
+                    borderColor: '#ffffff',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }
+        });
+    });
+
+</script>
+{% endblock %}

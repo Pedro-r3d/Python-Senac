@@ -1,14 +1,14 @@
 {% extends 'base.html' %}
 
 {% block title %}
-Criar visitantes
+Criar visitante
 {% endblock %}
 
 {% block content %}
 
-    <div class="container-fluid pt-5">
-        <h1 class="text text-light ">Criar novo visitante</h1>
-        <p class="text text-light">Use o formulário abaixo para criar um novo visitante</p>
+    <div>
+        <h1>Criar novo visitante</h1>
+        <p>Use o formulário abaixo para criar um novo visitante</p>
 
         <form action="./" method="post">
             {% csrf_token %}
@@ -34,9 +34,9 @@ Criar visitantes
                 <option value="3">Premium</option>
             </select>
 
-            <input type="submit" value="Salvar" class="btn btn-success mt-3 btn-custom">
+            <input type="submit" value="Salvar" class="btn btn-success mt-3">
         </form>
 
-        <a href="../" class="btn btn-outline-primary mt-3 btn-custom">Voltar</a>
+        <a href="../" class="btn btn-outline-primary mt-3">Voltar</a>
     </div>
-{% endblock%}
+{% endblock %}
