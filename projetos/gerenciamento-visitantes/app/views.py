@@ -2,11 +2,18 @@ from django.shortcuts import render, redirect
 from django.db.models import Count
 from datetime import datetime
 from uuid import uuid4
+<<<<<<< HEAD
 from django.db.models import Q
 from datetime import date
 from django.db.models import Avg
 from django.db.models.functions import ExtractYear, Now
 
+=======
+<<<<<<< HEAD
+=======
+from django.db.models import Q
+>>>>>>> 68a88759a20ac4732014fefcfd531ad508b3f4a5
+>>>>>>> 176149bb4dd2362da4c18995d700d52bac43da8f
 
 from .models import Visitor
 
