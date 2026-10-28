@@ -1,40 +1,6 @@
 {% extends 'base.html' %}
 
 {% block title %}
-<<<<<<< HEAD
-Atualizar visitante
-=======
-<<<<<<< HEAD
-Atualizar visitantes
->>>>>>> 176149bb4dd2362da4c18995d700d52bac43da8f
-{% endblock %}
-
-{% block content %}
-<div>
-    <h1>Atualizar visitante existente</h1>
-    <p>Use o formulário abaixo para atualizar um visitante</p>
-
-    <form action="./" method="post">
-        {% csrf_token %}
-        <label for="first_name" class="form-label">Primeiro nome</label>
-        <input type="text" class="form-control" id="first_name" name="first_name" value="{{ visitor.first_name }}">
-
-        <label for="last_name" class="form-label">Último nome</label>
-        <input type="text" class="form-control" id="last_name" name="last_name" value="{{ visitor.last_name }}">
-
-        <label for="cpf" class="form-label">CPF</label>
-        <input type="text" class="form-control" id="cpf" name="cpf" value="{{ visitor.cpf }}">
-
-        <label for="birth_date" class="form-label">Data de nascimento</label>
-        <input type="date" class="form-control" id="birth_date" name="birth_date"
-            value="{{ visitor.birth_date|date:'Y-m-d' }}">
-
-<<<<<<< HEAD
-=======
-        <a href="../../" class="btn btn-outline-primary mt-3 btn-custom">Voltar</a>
-    </div>
-{% endblock %}
-=======
 Atualizar visitante
 {% endblock %}
 
@@ -58,7 +24,6 @@ Atualizar visitante
         <input type="date" class="form-control" id="birth_date" name="birth_date"
             value="{{ visitor.birth_date|date:'Y-m-d' }}">
 
->>>>>>> 176149bb4dd2362da4c18995d700d52bac43da8f
         <label for="ticket_date" class="form-label">Data do ingresso</label>
         <input type="date" class="form-control" id="ticket_date" name="ticket_date"
             value="{{ visitor.ticket_date|date:'Y-m-d' }}">
@@ -75,9 +40,4 @@ Atualizar visitante
 
     <a href="../../" class="btn btn-outline-primary mt-3 btn-custom">Voltar</a>
 </div>
-<<<<<<< HEAD
 {% endblock %}
-=======
-{% endblock %}
->>>>>>> 68a88759a20ac4732014fefcfd531ad508b3f4a5
->>>>>>> 176149bb4dd2362da4c18995d700d52bac43da8f

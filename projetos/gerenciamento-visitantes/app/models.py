@@ -17,6 +17,7 @@ class Visitor(models.Model):
     ticket_type = models.IntegerField(choices=TicketType.choices)
     ticket_number = models.CharField(255)
 
+            
     def __str__(self):
         return f'{self.first_name} {self.last_name}'
 

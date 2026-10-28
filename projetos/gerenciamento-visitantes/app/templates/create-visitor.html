@@ -1,25 +1,6 @@
 {% extends 'base.html' %}
 
 {% block title %}
-<<<<<<< HEAD
-Criar visitante
-=======
-<<<<<<< HEAD
-Criar visitantes
->>>>>>> 176149bb4dd2362da4c18995d700d52bac43da8f
-{% endblock %}
-
-{% block content %}
-
-<<<<<<< HEAD
-    <div>
-        <h1>Criar novo visitante</h1>
-        <p>Use o formulário abaixo para criar um novo visitante</p>
-=======
-    <div class="container-fluid pt-5">
-        <h1 class="text text-light ">Criar novo visitante</h1>
-        <p class="text text-light">Use o formulário abaixo para criar um novo visitante</p>
-=======
 Criar visitante
 {% endblock %}
 
@@ -28,8 +9,17 @@ Criar visitante
     <div>
         <h1>Criar novo visitante</h1>
         <p>Use o formulário abaixo para criar um novo visitante</p>
->>>>>>> 68a88759a20ac4732014fefcfd531ad508b3f4a5
->>>>>>> 176149bb4dd2362da4c18995d700d52bac43da8f
+        {% if erroCpf %}
+            <div class="alert alert-danger mt-3" role="alert">
+                {{erroCpf}}
+            </div>
+        {% endif %}
+
+        {% if erroDate %}
+            <div class="alert alert-danger mt-3" role="alert">
+                {{erroDate}}
+            </div>
+        {% endif %}
 
         <form action="./" method="post">
             {% csrf_token %}
@@ -58,18 +48,6 @@ Criar visitante
             <input type="submit" value="Salvar" class="btn btn-success mt-3">
         </form>
 
-<<<<<<< HEAD
         <a href="../" class="btn btn-outline-primary mt-3">Voltar</a>
     </div>
 {% endblock %}
-=======
-<<<<<<< HEAD
-        <a href="../" class="btn btn-outline-primary mt-3 btn-custom">Voltar</a>
-    </div>
-{% endblock%}
-=======
-        <a href="../" class="btn btn-outline-primary mt-3">Voltar</a>
-    </div>
-{% endblock %}
->>>>>>> 68a88759a20ac4732014fefcfd531ad508b3f4a5
->>>>>>> 176149bb4dd2362da4c18995d700d52bac43da8f
