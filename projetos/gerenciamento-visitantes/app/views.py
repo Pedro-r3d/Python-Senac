@@ -7,9 +7,7 @@ from datetime import date
 from django.db.models import Avg
 from django.db.models.functions import ExtractYear, Now
 
-
-from django.db.models import Q
-
+from .forms.create_visitor_form import CreateVisitorForm
 from .models import Visitor
 
 # Create your views here.
@@ -64,31 +62,23 @@ def visitors(request):
 
 def create_visitor(request):
     if request.method == 'POST':
-        visitor = Visitor()
+        visitor_form = CreateVisitorForm(request.POST)
 
-        visitor.first_name = request.POST['first_name']
-        visitor.last_name = request.POST['last_name']
-        
-        visitor.cpf = request.POST['cpf']
-        if Visitor.objects.filter(cpf=visitor.cpf).exists():
-            return render(request, 'create-visitor.html',{
-                'erroCpf': 'Visitante com CPF já registrado'
-            })
-    
-        visitor.birth_date = datetime.strptime(request.POST['birth_date'], '%Y-%m-%d')
-        visitor.ticket_date = date.strptime(request.POST['ticket_date'], '%Y-%m-%d')
-        if visitor.ticket_date < date.today():
-            return render(request, 'create-visitor.html', {
-                'erroDate': 'Data não pode ser inferior a de hoje.'
-            })
-        visitor.ticket_type = request.POST['ticket_type']
-        visitor.ticket_number = str(uuid4())
+        if visitor_form.is_valid():
+            visitor = visitor_form.save(commit=False)
+            visitor.ticket_number = str(uuid4)
+            visitor.save()
 
-        visitor.save()
+            return redirect('visitors')
+    else:
+        visitor_form = CreateVisitorForm()
 
-        return redirect('visitors')
+    response = {
+        'form': visitor_form
+    }
+  
+    return render(request, 'create-visitor.html', response)
 
-    return render(request, 'create-visitor.html')
 
 def update_visitor(request, id):
     visitor = Visitor.objects.get(pk=id)
