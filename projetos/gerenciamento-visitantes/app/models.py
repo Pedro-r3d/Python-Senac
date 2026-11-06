@@ -1,8 +1,17 @@
 from django.db import models
 from datetime import date
+from django.core.exceptions import ValidationError
+from django.utils import timezone
 
 
 # Create your models here.
+
+def validate_date(value):
+    if value < timezone.localdate():
+        raise ValidationError(
+            'A data não pode ser inferior a de hoje.'
+        )
+
 class Visitor(models.Model):
     class TicketType(models.IntegerChoices):
         NORMAL = 1, 'Normal'
@@ -11,9 +20,11 @@ class Visitor(models.Model):
 
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
-    cpf = models.CharField(max_length=11)
+    cpf = models.CharField(max_length=11, unique=True, error_messages={
+        'unique' : 'Visitante cadastrado com esse CPF já existente.'
+    })
     birth_date = models.DateField()
-    ticket_date = models.DateField()
+    ticket_date = models.DateField(validators=[validate_date])
     ticket_type = models.IntegerField(choices=TicketType.choices)
     ticket_number = models.CharField(255)
 

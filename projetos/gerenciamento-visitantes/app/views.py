@@ -7,6 +7,7 @@ from datetime import date
 from django.db.models import Avg
 from django.db.models.functions import ExtractYear, Now
 
+from .forms.update_visitor_form import UpdateVisitorForm
 from .forms.create_visitor_form import CreateVisitorForm
 from .models import Visitor
 
@@ -28,8 +29,6 @@ def visitors(request):
         | Q(last_name__icontains=search)
         | Q(cpf__icontains=search),
         )
-    
-
 
     if order_by_id == '1':
         visitors = visitors.order_by('first_name')
@@ -66,7 +65,7 @@ def create_visitor(request):
 
         if visitor_form.is_valid():
             visitor = visitor_form.save(commit=False)
-            visitor.ticket_number = str(uuid4)
+            visitor.ticket_number = str(uuid4())
             visitor.save()
 
             return redirect('visitors')
@@ -84,22 +83,22 @@ def update_visitor(request, id):
     visitor = Visitor.objects.get(pk=id)
 
     if request.method == 'POST':
-        visitor.first_name = request.POST['first_name']
-        visitor.last_name = request.POST['last_name']
-        visitor.cpf = request.POST['cpf']
-        visitor.birth_date = datetime.strptime(request.POST['birth_date'], '%Y-%m-%d')
-        visitor.ticket_date = datetime.strptime(request.POST['ticket_date'], '%Y-%m-%d')
-        visitor.ticket_type = request.POST['ticket_type']
-
-        visitor.save()
-
-        return redirect('visitors')
-
+        visitor_form = UpdateVisitorForm(request.POST, instance=visitor)
+   
+        if visitor_form.is_valid():
+            visitor_form.save()
+            return redirect('visitors')
+    else:
+        visitor_form = UpdateVisitorForm(instance=visitor)
+   
     response = {
-        'visitor': visitor    
-    }
-
+           'form': visitor_form,
+           'ticket_number': visitor.ticket_number
+       }
+     
     return render(request, 'update-visitor.html', response)
+
+
 
 def delete_visitor(request, id):
     visitor = Visitor.objects.get(pk=id)
