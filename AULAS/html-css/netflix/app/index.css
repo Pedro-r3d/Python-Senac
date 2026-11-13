@@ -1,0 +1,153 @@
+.header{
+    display: flex;
+    height: 70px;
+    border-bottom: 1px solid #ccc;
+    padding-top: 5px;
+    padding-right: 40px;
+    padding-left: 40px;
+    justify-content: space-between;
+}  
+
+button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+::-webkit-scrollbar{
+    background-color: red;
+    width: 4px;
+
+}
+
+::-webkit-scrollbar-thumb{
+    background: rgb(70, 3, 3);
+}
+
+body{
+    background-color: black;
+    margin: 0;
+    color: white;
+}
+a{
+    text-decoration: none;
+}
+
+.options-header{
+    display: flex;
+    gap: 30px;
+    
+}
+
+.text{
+    padding-top: 10px;
+    list-style: none;
+    height: 25px;
+    cursor: pointer;   
+    color: white;
+    font-weight: 700;
+}
+
+.text:hover{
+    border-bottom: 2px solid #E50107;
+}
+
+.btn-primary{
+    background-color: white;
+}
+.btn-secondary{
+    background-color: #252729;
+    color: white;
+}
+.btn{
+    align-items: center;
+    border-radius: 5px;
+    font-size: 15px;
+
+    font-weight: 700;
+    width: 110px;
+    height: 40px;
+}
+
+.btn-primary:hover{
+    background-color: black;
+    color: white;
+}
+.btn-secondary:hover{
+    background-color: black;
+}
+
+.header-logo {
+    height: 70px;
+    width: 150px;
+}
+
+.header-user-icon{
+    height: 30px;
+    width: 40px;
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+}
+
+.section-main-content {
+    position: relative;
+}
+
+.section-main-content-buttons {
+    position: absolute;
+    top: 80%;
+    left: 4%;
+}
+
+.banner-home{
+    width: 100%;
+    height: auto;
+    display: block;
+    padding-left: 50px;
+    box-sizing: border-box;
+}
+
+.header-left-side{
+    display: flex;
+}
+
+.cards-sections{
+    width: 100%;
+    height: auto;
+    padding-left: 48px;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+}
+
+.cards:hover{
+    transform: scale(1.1);
+}
+
+.card-title-sections{
+    margin-top: 0px;
+    margin-bottom: 5px;
+}
+
+.cards{
+    border: 2px solid red;
+    border-radius: 5px;
+    width: 370px;
+    height: 150px;
+    transition: transform 0.3s ease-in-out;
+
+}
+
+.header-right-side{
+    display: flex;
+    color: white;
+    gap: 25px;
+    padding-top: 10px;
+}
+.icons{
+    display: flex;
+    color: white;
+    height: 70px;
+    font-size: 25px;
+}
