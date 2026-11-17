@@ -1,0 +1,201 @@
+.header{
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    border-right: 2px solid #1D232A;
+    width: 100px;
+    height: 100vh;
+    position: fixed;
+    background-color: #151C24;
+    box-sizing: border-box;
+   
+}
+.search-message{
+    border-radius: 5px;
+    width: 250px;
+    height: 30px;
+    background-color: #232934;
+    border: none;
+    padding-left: 30px;
+    color: white;
+}
+.send-message{
+    border-radius: 5px;
+    width: 740px;
+    height: 40px;
+    background-color: #232934;
+    border: none;
+    padding-left: 30px;
+    color: white;
+    border-radius: 12px;
+}
+
+.my-message{
+    display: flex;
+    margin-left: auto;
+    flex-direction: column;
+    padding-top: 30px;
+}
+
+.other-text-message{
+    font-size: 20px;
+    font-weight: 700;
+    color: white;
+    background-color: gray;
+    width: fit-content;
+    border-radius: 10px;
+}
+
+.name{
+    font-weight: 300;
+    font-size: 15px;
+}
+
+.other-message{
+    padding-left: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.my-text-message{
+    margin-left: auto;
+    font-size: 20px;
+    font-weight: 700;
+    color: white;
+    background-color: #02EC8B;
+    border-radius: 10px;
+}
+
+.icon-inputs{
+    position:absolute;
+    font-size: 30px;
+    z-index: 2;
+    color: white;
+}
+
+.search-message::placeholder{
+    color: white;
+}
+
+.chats-interface{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    border-bottom: 1px solid #1D232A;
+}
+
+
+.left-message{
+    margin-left: auto;
+}
+
+
+
+.chat-notification{
+    color: #03E18C;
+    padding-left: 15px;
+
+}
+
+.chat-hour{
+    justify-content: end;
+    padding-right: 5px;
+    padding-bottom: 10px;
+}
+
+
+
+.chats{
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+}
+
+.icons-messages{
+    font-size: 30px;
+    color: white;
+
+}
+
+.icon-header:hover{
+    color: #02EC8B;
+    padding: 10px;
+    border-radius: 10px;
+    background: #183736;
+}
+
+
+
+.messages{
+    display: flex;
+    flex-direction: column;
+    background-color: #151C24;
+    width: 310px;
+    height: 100vh;
+    color: white;
+    padding-top: 20px;
+    padding-left: 120px;
+    row-gap: 10px;
+    border-right: 2px solid #1D232A;
+    
+}
+
+body{
+    margin: 0;
+    background-image:url(./images/image-background-blue.png);
+}
+
+
+
+button{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
+.background-message{
+    background-color: #1D232A;
+    align-items: center;
+    height: 60px;
+    width: 100%;
+}
+.background-title{
+    align-items: center;
+    width: 100%;
+    padding-left: 10px;
+}
+
+.title-message{
+    padding-top: 10px;
+    color: white;
+
+}
+.subtitle-message{
+    color: grey;
+}
+
+.icons-message{
+    display: flex;
+    gap: 25px;
+    align-items:center;
+
+    height: 60px;
+}
+
+
+.icon-header{
+    width: 80px;
+    font-size: 40px;
+    height: 80px;
+    color: white; 
+}
+
+.logo-header{
+    width: 80px;
+    height: 80px;
+}
